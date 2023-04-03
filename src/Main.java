@@ -23,17 +23,21 @@ public class Main {
      * @return Last Digit of The Sum Of Squares Of Fibonacci Numbers
      */
     private static long getFibonacciSumSquaresFast(long n){
-        // create 1D array
-        long[] array = new long[(int)n + 1];
-        array[0] = 0;
-        array[1] = 1;
-        long sum = 1; // array[0] + array[1]
-        // iterate through each term and calculate the fibonacci number
-        for(int i = 2; i < array.length; i++){
-            array[i] = array[i - 2] + array[i - 1];
-            sum += Math.pow(array[i], 2);
+        if(n <= 1){
+            return n;
+        } else {
+            // create 1D array
+            long[] array = new long[(int)n + 1];
+            array[0] = 0;
+            array[1] = 1;
+            long sum = 1; // array[0] + array[1]
+            // iterate through each term and calculate the fibonacci number
+            for(int i = 2; i < array.length; i++){
+                array[i] = array[i - 2] + array[i - 1];
+                sum += Math.pow(array[i], 2);
+            }
+            return sum % 10;
         }
-        return sum % 10;
     }
 
     public static void main(String[] args) {
